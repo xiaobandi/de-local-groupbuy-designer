@@ -1,0 +1,102 @@
+apiVersion: digital-employee/v1
+kind: DigitalEmployee
+metadata:
+  id: de_local_groupbuy_designer
+  name: 团购引流设计师
+  alias: null
+  repo: de-local-groupbuy-designer
+  card_no: 7.4.5 ④
+  group: local
+  group_label: 本地生活服务商家
+  phase: '**P1 二期**（低频高价值，适合作为 P0 用户的增购项）'
+  complexity: M
+  score: 21
+  price: 100–300 元/月，或按套餐策划 200–500 元/次；**代配置服务加成：300–800 元/次**（成本表梳理+首套三级套餐陪跑上架）
+  channels:
+  - GitHub（必备）
+  - '**闲鱼/淘宝**（"团购套餐策划"按次卖，天然契合）'
+  - 小红书
+  - Dify Marketplace
+  license: Proprietary
+  version: 1.0.0
+spec:
+  positioning: 把"被平台牵着走的低价团购"变成"算得清毛利的引流武器"
+  users: 所有做团购的到店门店
+  boundary: '**做**：竞品团购监控、三级套餐结构设计、扣点后毛利测算、上架文案；**不做**：不替商家拍板定价（只出测算与方案）、不做刷单冲榜'
+  kpi: 套餐扣点后毛利 ≥ 老板设定红线；团购核销率提升；引流款→利润款转化率可追踪
+  roi_summary: 一次避开亏损套餐即可回本；按次收费模式契合"单次 ≤¥300"小额验证硬边界
+  demand_refs:
+  - D05
+  - D12
+  - D13
+  demand_support: 充分
+  demand_evidence: 中
+runtime:
+  system_prompt: persona/system-prompt.md
+  boundary: persona/boundary.md
+  kpi: persona/kpi.md
+deliverables:
+  skills:
+  - slug: platform-rules-kb
+    name: 平台规则库
+    kind: private
+    path: skills/platform-rules-kb
+    version: 1.0.0
+    maturity: contract-complete
+  - slug: pricing-calculator
+    name: 定价测算器
+    kind: private
+    path: skills/pricing-calculator
+    version: 1.0.0
+    maturity: contract-complete
+  workflows:
+  - slug: wf-local-groupbuy-competitor-monitor
+    name: 竞品团购监控
+    path: workflows/wf-local-groupbuy-competitor-monitor
+    version: 1.0.0
+    phase: P1
+    calls:
+    - data-ingest-adapter
+  - slug: wf-local-groupbuy-structure
+    name: 套餐结构设计
+    path: workflows/wf-local-groupbuy-structure
+    version: 1.0.0
+    phase: P1
+    calls:
+    - pricing-calculator
+  - slug: wf-local-groupbuy-cost
+    name: 扣点毛利测算
+    path: workflows/wf-local-groupbuy-cost
+    version: 1.0.0
+    phase: P1
+    calls:
+    - pricing-calculator
+    - platform-rules-kb
+  - slug: wf-local-groupbuy-listing
+    name: 团购标题与图片文案
+    path: workflows/wf-local-groupbuy-listing
+    version: 1.0.0
+    phase: P1
+    calls:
+    - groupbuy-copy-writer
+  - slug: wf-local-groupbuy-redemption-review
+    name: 核销数据复盘调价
+    path: workflows/wf-local-groupbuy-redemption-review
+    version: 1.0.0
+    phase: P2
+    calls:
+    - data-ingest-adapter
+    - pricing-calculator
+  knowledge_base: kb/
+  connectors: connectors/bindings.yaml
+external_dependencies:
+- repo: agent-skills-core
+  version: 1.0.0
+  skills:
+  - groupbuy-copy-writer
+  resolution: external
+spec_only_dependencies:
+- repo: agent-skills-core
+  spec: specs/data-ingest-adapter.md
+  skill: data-ingest-adapter
+  why: 报告明确"数据采集连接器族不公共化为 SKILL"——开源侧只发 Spec + Mock + 权限声明
