@@ -1,0 +1,15 @@
+{
+  "name": "wf-local-groupbuy-redemption-review",
+  "title": "核销数据复盘调价",
+  "kind": "workflow",
+  "owner": "de-local-groupbuy-designer",
+  "complexity": "M",
+  "phase": "P2",
+  "one_liner": "核销数据 → 识别滞销款 → 调价/换品建议",
+  "pages": [
+    "docs/使用手册.html",
+    "docs/使用示例.html",
+    "docs/用户场景.html",
+    "docs/架构与流程图.html"
+  ]
+}

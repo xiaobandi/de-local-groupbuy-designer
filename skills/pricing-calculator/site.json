@@ -1,0 +1,15 @@
+{
+  "name": "pricing-calculator",
+  "title": "定价测算器",
+  "kind": "skill",
+  "owner": "de-local-groupbuy-designer",
+  "complexity": "S",
+  "phase": "P1",
+  "one_liner": "扣点+成本+毛利联动测算（成本+费率 → 定价区间）",
+  "pages": [
+    "docs/使用手册.html",
+    "docs/使用示例.html",
+    "docs/用户场景.html",
+    "docs/架构与流程图.html"
+  ]
+}

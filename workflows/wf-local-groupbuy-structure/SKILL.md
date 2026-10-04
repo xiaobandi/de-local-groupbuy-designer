@@ -1,54 +1,53 @@
 ---
-name: wf-local-groupbuy-cost
+name: wf-local-groupbuy-structure
 description: >-
-  团购引流设计师 的「扣点毛利测算」工作流：叠加平台扣点+达人佣金（综合费率 5–7%+，据 R4 调研）→ 毛利红线校验。触发方式：随 W2 联动。
-  当用户要完成「扣点毛利测算」这件事、或触发了上述条件时使用。
+  团购引流设计师 的「套餐结构设计」工作流：引流款/主力款/利润款三级组合建议。触发方式：人工（发起策划）。
+  当用户要完成「套餐结构设计」这件事、或触发了上述条件时使用。
 license: Proprietary
+compatibility: >-
+  需要能读取工作区文件；若环境支持执行代码，将额外启用 scripts/ 下的确定性脚本路径。
+  跨 WorkBuddy / ChatGPT / DeepSeek Harness / Kimi Work / 豆包工作。
 metadata:
   author: PLATFORM
   version: "1.0.0"
   standard: agent-skills/v1
+  library: agent-skills-library
   layer: L2-workflow
   owner: de_local_groupbuy_designer
+  repo: de-local-groupbuy-designer
+  visibility: private_to_employee
+  delivery: employee
   complexity: S
   phase: P1
   source: library
 ---
 
-# 扣点毛利测算
+# 套餐结构设计
 
-> 归属：**团购引流设计师**（`de-local-groupbuy-designer`）　触发：随 W2 联动　
+> 归属：**团购引流设计师**（`de-local-groupbuy-designer`）　触发：人工（发起策划）　
 > 复杂度 S　阶段 P1
 
 ## 一、这条工作流解决什么
 
-叠加平台扣点+达人佣金（综合费率 5–7%+，据 R4 调研）→ 毛利红线校验
+引流款/主力款/利润款三级组合建议
 
-**业务收益**：避免单笔亏损套餐，止损价值直接
+**业务收益**：一次策划服务市价 200–500 元（据 R4 调研）
 
 ## 二、调用的 SKILL（必填列，逐条锁定版本）
 
 | 技能名 | slug | 来源仓 | 版本 |
 |---|---|---|---|
 | `定价测算器` | `pricing-calculator` | 本仓 | v1.0.0 |
-| `平台规则库` | `platform-rules-kb` | 本仓 | v1.0.0 |
 
 > 公共技能来自 `agent-skills-core@1.0.0`，本仓库只做外部依赖引用，
 > **不内联复制**其正文——这是三层仓库体系的硬规则，避免同一能力多份副本各自漂移。
 
 ## 三、执行步骤（每步四要素齐备）
 
-### 步骤 1：叠加平台扣点+达人佣金（综合费率 5–7%+，据 R4 调研）
+### 步骤 1：引流款/主力款/利润款三级组合建议
 
-- **做**：叠加平台扣点+达人佣金（综合费率 5–7%+，据 R4 调研）
+- **做**：引流款/主力款/利润款三级组合建议
 - **输入来源**：用户提供的原始材料（工作流第 1 步没有「上一步」）/ 本员工知识库 `kb/` / 连接器只读数据；三者皆空时必须停在 G1 闸门
-- **依据与结论**：把本步结论对应到具体输入项
-- **未决 · 待填**：缺数据处写 `<待填>` 并给出获取方式
-
-### 步骤 2：毛利红线校验
-
-- **做**：毛利红线校验
-- **输入来源**：步骤 1 的产出 / 本员工知识库 `kb/` / 连接器只读数据
 - **依据与结论**：把本步结论对应到具体输入项
 - **未决 · 待填**：缺数据处写 `<待填>` 并给出获取方式
 
