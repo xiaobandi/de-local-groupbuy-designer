@@ -5,6 +5,12 @@
 > **7.4.5 ④**　·　本地生活服务商家　·　阶段 **P1 二期**（低频高价值，适合作为 P0 用户的增购项）　·　
 > 复杂度 M　·　100–300 元/月，或按套餐策划 200–500 元/次；**代配置服务加成：300–800 元/次**（成本表梳理+首套三级套餐陪跑上架）　·　定义卡 7.4.5 ④
 
+## 演示（真实执行录播）
+
+![演示](workflows/wf-local-groupbuy-cost/docs/images/08-demo-run.gif)
+
+*真实执行回放（GIF 自动循环，非摆拍）· [▶ 观看完整版 MP4](workflows/wf-local-groupbuy-cost/docs/images/08-demo-run.mp4) · 台账见 [`reports/real-run/wf-local-groupbuy-cost.md`](reports/real-run/wf-local-groupbuy-cost.md)*
+
 ![架构](docs/images/architecture.svg)
 
 ## 效果（真实执行）
@@ -58,6 +64,7 @@ python3 tests/run.py            # 先跑一遍自检，确认环境与契约都�
 
 ```text
 de-local-groupbuy-designer/
+├── employee.md            # 人读定义卡（12 主字段 + 2 扩展组，由 employee.yaml 生成）
 ├── employee.yaml          # 机器契约（能力清单 + 依赖锁）
 ├── dependencies.yaml      # 对 core 的外部依赖（含版本）
 ├── persona/               # 运行提示词 / 边界 / KPI
