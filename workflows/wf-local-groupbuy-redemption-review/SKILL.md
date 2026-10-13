@@ -3,7 +3,7 @@ name: wf-local-groupbuy-redemption-review
 description: >-
   团购引流设计师 的「核销数据复盘调价」工作流：核销数据 → 识别滞销款 → 调价/换品建议。触发方式：定时（每月）。
   当用户要完成「核销数据复盘调价」这件事、或触发了上述条件时使用。
-license: Proprietary
+license: Apache-2.0
 compatibility: >-
   需要能读取工作区文件；若环境支持执行代码，将额外启用 scripts/ 下的确定性脚本路径。
   跨 WorkBuddy / ChatGPT / DeepSeek Harness / Kimi Work / 豆包工作。

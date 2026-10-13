@@ -3,7 +3,7 @@ name: wf-local-groupbuy-cost
 description: >-
   团购引流设计师 的「扣点毛利测算」工作流：叠加平台扣点+达人佣金（综合费率 5–7%+，据 R4 调研）→ 毛利红线校验。触发方式：随 W2 联动。
   当用户要完成「扣点毛利测算」这件事、或触发了上述条件时使用。
-license: Proprietary
+license: Apache-2.0
 compatibility: >-
   需要能读取工作区文件；若环境支持执行代码，将额外启用 scripts/ 下的确定性脚本路径。
   跨 WorkBuddy / ChatGPT / DeepSeek Harness / Kimi Work / 豆包工作。

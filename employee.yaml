@@ -17,7 +17,7 @@ metadata:
   - '**闲鱼/淘宝**（"团购套餐策划"按次卖，天然契合）'
   - 小红书
   - Dify Marketplace
-  license: Proprietary
+  license: Apache-2.0
   version: 1.0.0
 spec:
   positioning: 把"被平台牵着走的低价团购"变成"算得清毛利的引流武器"
